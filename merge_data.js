@@ -45,14 +45,8 @@ function main() {
   // 1. Read Markdown file to extract Python definitions of accounts
   const mdContent = fs.readFileSync(mdFilePath, 'utf8');
   
-  // Find python block
-  const blockMatch = mdContent.match(/```python\n([\s\S]*?)```/);
-  if (!blockMatch) {
-    console.error("Could not find Python code block");
-    return;
-  }
-  
-  const pythonCode = blockMatch[1];
+  // Find python block (starts from the beginning of the file and ends at first triple backtick)
+  const pythonCode = mdContent.split("```")[0];
   
   // Let's parse the lists from pythonCode using regexes
   // Since we know the structure is: category_name = [ { ... }, ... ]
@@ -109,11 +103,11 @@ function main() {
   const processedHandles = new Set();
 
   for (const row of csvAccounts) {
-    const link = row["Twitter Link"];
+    const link = row["Twitter Link"] || "";
     const handle = normalizeHandle(link);
-    const name = row["Name"];
-    const note = row["Note"];
-    const groupName = row["Group Name"];
+    const name = row["Name"] || "";
+    const note = row["Note"] || "";
+    const groupName = row["Group Name"] || "";
 
     // Category mapping
     let category = groupName;

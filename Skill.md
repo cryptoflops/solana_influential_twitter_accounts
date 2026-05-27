@@ -49,44 +49,6 @@ Is there a Solana-based smart contract, token, or dApp linked and verifiable?
 
 Is the project listed in recognized Solana ecosystem directories (e.g., Solana Foundation ecosystem page, Solana开发者 docs, reputable Solana project lists)?
 
-Output format:
-For each profile, return a JSON object with this exact structure:
+Categorization:
 
-json
-{
-  "handle": "@username",
-  "url": "https://x.com/username",
-  "link_status": "working" | "broken" | "suspended" | "redirect_issue",
-  "is_active": true | false,
-  "last_activity_days_ago": <number or null>,
-  "is_legitimate": true | false | "uncertain",
-  "legitimacy_reasons": ["reason 1", "reason 2"],
-  "is_solana_relevant": true | false | "uncertain",
-  "solana_connection_type": "individual_contributor" | "project_team" | "project_account" | "investor_fund" | "researcher" | "community_builder" | "media" | "other" | "none",
-  "solana_evidence": ["quote or bio snippet", "linked project name", "event mention", etc.],
-  "red_flags": ["flag 1", "flag 2"],
-  "confidence_score": 0.0–1.0,
-  "notes": "brief human-readable summary"
-}
-Rules:
 
-Treat any account that cannot be clearly verified as "is_legitimate": "uncertain" or "is_solana_relevant": "uncertain" with a lower confidence_score, rather than assuming it’s fake or irrelevant.
-
-If a profile is old but historically important to Solana (e.g., early contributor, foundational project) and activity is low, still mark it as Solana-relevant if evidence is strong.
-
-Do not rely only on follower count; focus on content, affiliations, and ecosystem role.
-
-If you cannot access a page (rate-limited, blocked, etc.), mark link_status appropriately and set confidence low.
-
-Final deliverable:
-Return a JSON array containing one object per profile, in the same order as the input list, plus a short summary at the top:
-
-text
-# Summary
-- Total profiles analyzed: N
-- Working links: X
-- Broken/suspended: Y
-- Legitimate: A
-- Solana-relevant: B
-- High-confidence relevant legitimate profiles: C
-- Profiles needing manual review: D
