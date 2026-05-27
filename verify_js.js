@@ -3,7 +3,7 @@ const path = require('path');
 const vm = require('vm');
 
 function main() {
-  const workspaceDir = "/Users/psyhodivka/.gemini/antigravity-ide/scratch/solana-twitter-research";
+  const workspaceDir = "user/solana-twitter-research";
   const htmlPath = path.join(workspaceDir, "index.html");
 
   if (!fs.existsSync(htmlPath)) {
