@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 function main() {
-  const workspaceDir = "/Users/psyhodivka/.gemini/antigravity-ide/scratch/solana-twitter-research";
+  const workspaceDir = "user/solana-twitter-research";
   const jsonFilePath = path.join(workspaceDir, "data.json");
   const templateFilePath = path.join(workspaceDir, "dashboard_template.html");
   const outputHtmlPath = path.join(workspaceDir, "index.html");
